@@ -13,3 +13,6 @@ class LoginPageLocators():
     ID_REGISTRATION_PASSWORD1 = (By.ID, "id_registration-password1")
     ID_REGISTRATION_PASSWORD2 = (By.ID, "id_registration-password2")
     ID_REGISTRATION_BUTTON = (By.NAME, "registration_submit")
+
+class ProductAddBusketPageLocatort():
+    BUTTON_ADD_BUSKET = (By.CLASS_NAME, "btn-add-to-basket")
