@@ -14,5 +14,15 @@ class LoginPageLocators():
     ID_REGISTRATION_PASSWORD2 = (By.ID, "id_registration-password2")
     ID_REGISTRATION_BUTTON = (By.NAME, "registration_submit")
 
-class ProductAddBusketPageLocatort():
+class ProductAddBusketPageLocators():
     BUTTON_ADD_BUSKET = (By.CLASS_NAME, "btn-add-to-basket")
+
+class CheckProductNamePageLocators():
+    XPATH_GET_NAME_BEFORE_PRODUCT = (By.XPATH, "//div[@class='col-sm-6 product_main']/h1")
+    XPATH_GET_NAME_AFTER_PRODUCT = (By.XPATH, "//div[@class='alertinner ']/strong")
+    Product_name_before_adding = ""
+    Product_name_after_adding = ""
+
+class PriceProductPageLocators():
+    CLASS_PRODUCT_BEFORE_ADD_BASKET = (By.CSS_SELECTOR, ".product_main .price_color")
+    XPATH_PRODUCT_AFTER_ADD_BASKET = (By.CSS_SELECTOR, ".alert-info .alertinner strong")
