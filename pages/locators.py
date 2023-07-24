@@ -24,5 +24,9 @@ class CheckProductNamePageLocators():
     Product_name_after_adding = ""
 
 class PriceProductPageLocators():
-    CLASS_PRODUCT_BEFORE_ADD_BASKET = (By.CSS_SELECTOR, ".product_main .price_color")
-    XPATH_PRODUCT_AFTER_ADD_BASKET = (By.CSS_SELECTOR, ".alert-info .alertinner strong")
+    CSS_SELECTOR_PRODUCT_BEFORE_ADD_BASKET = (By.CSS_SELECTOR, ".product_main .price_color")
+    CSS_SELECTOR_PRODUCT_AFTER_ADD_BASKET = (By.CSS_SELECTOR, ".alert-info .alertinner strong")
+    
+
+class SuccessMesasages():
+    CSS_SELECTOR_PRODUCT_SUCCESS_ADDING_PRODUCT_TO_BASKET = (By.CSS_SELECTOR, ".alert-success .alertinner strong")
