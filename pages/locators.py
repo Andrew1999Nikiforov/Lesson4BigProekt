@@ -33,3 +33,6 @@ class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link")
     BASKET_LINK = (By.CSS_SELECTOR, 'span.btn-group a.btn.btn-default')
+    BASKET_IS_EMPTY = (By.CLASS_NAME, "basket-title")
+    BASKET_IS_EMPTY_MESSAGE = (By.ID, "content_inner")
+    BASKET_IS_EMPTY_MESSAGE_TEXT = "Your basket is empty."

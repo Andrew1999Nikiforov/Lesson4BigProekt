@@ -27,3 +27,4 @@ class ProductPage(BasePage):
 
     def check_func_is_disappeared_success_message_after_adding_product_to_basket(self):
         assert BasePage.is_disappeared(self, *SuccessMesasages.CSS_SELECTOR_PRODUCT_SUCCESS_ADDING_PRODUCT_TO_BASKET), "Success message is presented, but should not be"
+
