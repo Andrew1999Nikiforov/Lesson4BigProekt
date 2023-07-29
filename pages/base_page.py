@@ -21,6 +21,7 @@ class BasePage():
             self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
+        
         return True
     
     def is_not_element_present(self, how, what, timeout=4): # Проверка, что на сайте не имеется какой то элемент
@@ -60,3 +61,6 @@ class BasePage():
 
     def guest_clik_button_see_basket(self):
         self.browser.find_element(*BasePageLocators.BASKET_LINK).click()
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented, probably unauthorised user"

@@ -2,6 +2,7 @@ from .base_page import BasePage
 from .locators import LoginPageLocators
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+import time
 
 class LoginPage(BasePage):
     def should_be_login_page(self):
@@ -20,7 +21,6 @@ class LoginPage(BasePage):
         except NoSuchElementException:
             assert False, "На сайте не имеется форма для логина "
 
-
     def should_be_register_form(self):
         try:
             self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_EMAIL)
@@ -29,3 +29,9 @@ class LoginPage(BasePage):
             self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_BUTTON)
         except NoSuchElementException:
             assert False, "На сайте не имеется форма для регистрации "
+
+    def register_new_user(self, email, password):
+        self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_EMAIL).sendkeys(email)
+        self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_PASSWORD1).sendkeys(password)
+        self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_PASSWORD2).sendkeys(password)
+        self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_BUTTON).click()
