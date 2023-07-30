@@ -37,5 +37,5 @@ class BasePageLocators():
     BASKET_IS_EMPTY_MESSAGE = (By.ID, "content_inner")
     BASKET_IS_EMPTY_MESSAGE_TEXT = "Your basket is empty."
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
-    email = str(time.time()) + "@fakemail.org"
-    password = "andeo12345"
+
+    CHECK_AUTORIZARED_USER = (By.CLASS_NAME, "alertinner wicon")

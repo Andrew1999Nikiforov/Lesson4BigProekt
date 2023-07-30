@@ -1,7 +1,11 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
+from .locators import BasePageLocators
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 import time
 
 class LoginPage(BasePage):
@@ -30,8 +34,14 @@ class LoginPage(BasePage):
         except NoSuchElementException:
             assert False, "На сайте не имеется форма для регистрации "
 
-    def register_new_user(self, email, password):
-        self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_EMAIL).sendkeys(email)
-        self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_PASSWORD1).sendkeys(password)
-        self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_PASSWORD2).sendkeys(password)
+    def register_new_user(self, EMAIL, PASSWORD):
+        self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_EMAIL).send_keys(EMAIL)
+        self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_PASSWORD1).send_keys(PASSWORD)
+        self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_PASSWORD2).send_keys(PASSWORD)
         self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_BUTTON).click()
+
+    def check_user_in_autorizared(self):
+        try:
+            WebDriverWait(self.browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "alertinner")))
+        except TimeoutException:
+            assert False, "Вы не смогли авторизоваться"

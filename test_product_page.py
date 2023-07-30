@@ -24,7 +24,7 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.solve_quiz_and_get_code()
     page.check_after_add_name_product()
     page.check_price_before_and_after_add_basket()
-"""
+
 @pytest.mark.xfail # Тест падает, потому что я проверяю корзину на то, что она пуста, но перед этим добавляю товар в него
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
@@ -75,15 +75,19 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     basket_page = BasketPage(browser, browser.current_url)
     basket_page.should_not_be_success_message()
     basket_page.should_not_be_success_message_text()
-
+"""
 class TestUserAddToBasketFromProductPage():
     
     @pytest.fixture(scope="function", autouse=True)
+
     def setup(self, browser):
         link = "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/"
         self.login_page = LoginPage(browser, link)
         self.login_page.open()
-        self.login_page.register_new_user(BasePageLocators.email, BasePageLocators.password)
+        EMAIL = str(time.time()) + "@fakemail.org"
+        PASSWORD = "andeo12345"
+        self.login_page.register_new_user(EMAIL, PASSWORD)
+        self.login_page.check_user_in_autorizared()
 
     def test_user_cant_see_success_message(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
@@ -91,7 +95,7 @@ class TestUserAddToBasketFromProductPage():
         page.open()
         page.check_func_is_not_element_present_success_message_after_adding_product_to_basket()
 
-    def test_user_can_add_product_to_basket(self, browser, link):
+    def test_user_can_add_product_to_basket(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
         page = ProductPage(browser, link)
         page.open()
