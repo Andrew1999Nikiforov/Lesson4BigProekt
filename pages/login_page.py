@@ -1,12 +1,10 @@
-from .base_page import BasePage
-from .locators import LoginPageLocators
-from .locators import BasePageLocators
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
-import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from .locators import LoginPageLocators
+from .base_page import BasePage
 
 class LoginPage(BasePage):
     def should_be_login_page(self):
@@ -15,7 +13,7 @@ class LoginPage(BasePage):
         self.should_be_register_form()
 
     def should_be_login_url(self):
-        assert "login" in self.browser.current_url, "Ссылка не корректна"
+        assert "login" in self.browser.current_url, "Link is not correct"
 
     def should_be_login_form(self):
         try:
@@ -23,7 +21,7 @@ class LoginPage(BasePage):
             self.browser.find_element(*LoginPageLocators.ID_LOGIN_PASSWORD)
             self.browser.find_element(*LoginPageLocators.ID_LOGIN_BUTTON)
         except NoSuchElementException:
-            assert False, "На сайте не имеется форма для логина "
+            assert False, "The site does not have a login form."
 
     def should_be_register_form(self):
         try:
@@ -32,7 +30,7 @@ class LoginPage(BasePage):
             self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_PASSWORD2)
             self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_BUTTON)
         except NoSuchElementException:
-            assert False, "На сайте не имеется форма для регистрации "
+            assert False, "The site does not have a registration form."
 
     def register_new_user(self, EMAIL, PASSWORD):
         self.browser.find_element(*LoginPageLocators.ID_REGISTRATION_EMAIL).send_keys(EMAIL)
@@ -44,4 +42,4 @@ class LoginPage(BasePage):
         try:
             WebDriverWait(self.browser, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "alertinner")))
         except TimeoutException:
-            assert False, "Вы не смогли авторизоваться"
+            assert False, "Authorization failed"

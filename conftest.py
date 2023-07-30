@@ -8,7 +8,7 @@ def pytest_addoption(parser):
     parser.addoption('--language', action='store', default="en",
                      help="Choose language: ru, en e.t.d.")
     
-    # По умолчанию работает только chrome. Я так и планировал
+    # По умолчанию работает только chrome.
 @pytest.fixture(scope="function")
 def browser(request):
 

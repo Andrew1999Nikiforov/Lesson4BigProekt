@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-import time
+
 class MainPageLocators():
     pass
 
@@ -37,5 +37,4 @@ class BasePageLocators():
     BASKET_IS_EMPTY_MESSAGE = (By.ID, "content_inner")
     BASKET_IS_EMPTY_MESSAGE_TEXT = "Your basket is empty."
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
-
     CHECK_AUTORIZARED_USER = (By.CLASS_NAME, "alertinner wicon")

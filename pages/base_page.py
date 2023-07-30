@@ -7,7 +7,6 @@ from .locators import BasePageLocators
 import math
 
 class BasePage():
-
     def __init__(self, browser, url, timeout=5):
         self.browser = browser
         self.url = url
@@ -21,7 +20,6 @@ class BasePage():
             self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
-        
         return True
     
     def is_not_element_present(self, how, what, timeout=4): # Проверка, что на сайте не имеется какой то элемент
